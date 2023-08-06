@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+{#    <div class="card-group">#}
+    {% for post in object_list %}
+        <div class="card" style="width: 50rem;">
+            <div class="card-header">
+                <span class="font-weight-bold"><a href="{% url 'post_detail' post.pk  %}"><h2>{{ post.title }}</h2></a></span>
+            </div>
+            {% if post.picture %}
+                <img class="card-img-top" src="{{ post.picture.url }}" alt="{{ post.caption }}">
+            {%  endif %}
+            <div class="card-body">
+                {{ post.caption }}...<a href="{% url 'post_detail' post.pk  %}">batafsil</a>
+            </div>
+            <div class="card-footer text-left text-muted">
+                <span class="text-muted">muallif {{ post.user }} &middot; {{ post.posted_time }}</span>
+            </div>
+{#        </div>#}
+        <br />
+    {% endfor %}
+    </div>
+</body>
+</html>
